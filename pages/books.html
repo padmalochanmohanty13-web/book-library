@@ -1,94 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/books.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-</head>
-<body>
-
+    <link rel="stylesheet" href="../css/books.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <!-- NAVBAR -->
 
     <header class="navbar">
-        <div class="logo">
-            📚 BookStore
-        </div>
+      <div class="logo">📚 BookStore</div>
 
-        <nav class="nav-links">
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
 
-            <a href="index.html" class="active"
->
-                Home
-            </a>
+        <a href="pages/categories.html"> Categories </a>
 
-            <a href="pages/categories.html">
-                Categories
-            </a>
+        <a href="books.html" class="active"> All Books </a>
 
-            <a href="pages/books.html">
-                All Books
-            </a>
+        <a href="#"> About </a>
+      </nav>
 
-            <a href="#">
-                About
-            </a>
-
-        </nav>
-        
-        <div class="cart">
-            <button><i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-
+      <div class="cart">
+        <button><i class="fa-solid fa-cart-shopping"></i></button>
+      </div>
     </header>
 
     <div class="book-heading">
-        <span><i class="fa-solid fa-book-open"></i> Our Collection</span>
-        <h1>All Books</h1>
+      <span><i class="fa-solid fa-book-open"></i> Our Collection</span>
+      <h1>All Books</h1>
     </div>
-
 
     <!-- Search Section -->
 
-      <section class="search-section">
+    <section class="search-section">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
 
-        <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search books by title or author..."
+        />
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <button id="searchBtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search books by title or author..."
-            >
-
-            <button id="searchBtn">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                Search
-
-            </button>
-
-        </div>
-
+          Search
+        </button>
+      </div>
     </section>
 
     <!-- Books -->
-      <main class="books-section">
-
-        <div
-            id="booksContainer"
-            class="books-grid"
-        ></div>
-
+    <main class="books-section">
+      <div id="booksContainer" class="books-grid"></div>
     </main>
 
-
-
-
     <script src="../js/books.js"></script>
-</body>
+  </body>
 </html>
