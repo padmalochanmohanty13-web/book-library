@@ -240,4 +240,20 @@ searchInput.addEventListener(
 
 
 
-getBooks(" books");
+const params = new URLSearchParams(window.location.search);
+const searchQuery = params.get("search");
+
+if (searchQuery) {
+
+    searchInput.value = searchQuery;
+    getBooks(searchQuery);
+
+} else {
+
+    getBooks("books");
+
+}
+
+
+
+

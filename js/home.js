@@ -91,9 +91,40 @@ const categories = [
 //     }
 // ];
 
+// const categoryContainer = document.getElementById("categoryContainer");
+
+// function displayCategories() {
+//     categoryContainer.innerHTML = "";
+
+//     categories.forEach(category => {
+
+//         const categoryCard = document.createElement("div");
+
+//         categoryCard.classList.add("category-card");
+
+//         categoryCard.innerHTML = `
+//             <img 
+//                 src="${category.image}" 
+//                 alt="${category.name}"
+//             >
+
+//             <div class="category-info">
+//                 <h3>${category.name}</h3>
+//                 <p>${category.description}</p>
+//             </div>
+//         `;
+
+//         categoryContainer.appendChild(categoryCard);
+//     });
+// }
+
+// displayCategories();
+
+
 const categoryContainer = document.getElementById("categoryContainer");
 
 function displayCategories() {
+
     categoryContainer.innerHTML = "";
 
     categories.forEach(category => {
@@ -114,8 +145,45 @@ function displayCategories() {
             </div>
         `;
 
+        // CLICK CATEGORY
+        categoryCard.addEventListener("click", function () {
+
+            window.location.href =
+                `pages/books.html?search=${encodeURIComponent(category.name)}`;
+
+        });
+
         categoryContainer.appendChild(categoryCard);
     });
 }
 
 displayCategories();
+
+
+
+
+
+
+//search button
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+function searchFromHome() {
+    const query = searchInput.value.trim();
+
+    if (query === "") {
+        alert("Please enter a book name");
+        return;
+    }
+
+    window.location.href =
+        `pages/books.html?search=${encodeURIComponent(query)}`;
+}
+
+searchBtn.addEventListener("click", searchFromHome);
+
+searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        searchFromHome();
+    }
+});
