@@ -15,10 +15,16 @@ const searchBtn = document.getElementById("searchBtn");
 
 const DEFAULT_PRICE = 399;
 
+
+
+
 async function getBooks(query) {
   try {
+
+     let startIndex = 0;
+
     const res = await fetch(
-      `${URL}?q=${encodeURIComponent(query)}&maxResults=40&key=${API_KEY}`,
+      `${URL}?q=${encodeURIComponent(query)}&maxResults=40&startIndex=${startIndex}&key=${API_KEY}`,
     );
 
     console.log("Response:", res);
@@ -44,14 +50,28 @@ async function getBooks(query) {
       return hasAuthor && hasImage;
     });
 
+    // FOR UNIQUE BOOKS
+
+    const uniqueBooks = Array.from(
+  new Map(
+    validBooks.map(book => [book.id, book])
+  ).values()
+);
+
     // Show maximum 20 books
-    displayBooks(validBooks.slice(0, 40));
+    displayBooks(uniqueBooks.slice(0, 40));
+
   } catch (error) {
     console.error("Error:", error);
 
     booksContainer.innerHTML = "";
   }
 }
+
+
+
+
+
 
 // Display BOOKS
 
@@ -178,4 +198,62 @@ function formatPrice(
 }
 
 
-getBooks("fiction books");
+// search Books
+
+function searchBooks() {
+  const query = searchInput.value.trim();
+  // Empty search
+  if (query === "") {
+
+    getBooks("books");
+
+    return;
+
+  }
+
+  // Search entered text
+
+  getBooks(query);
+
+}
+
+searchBtn.addEventListener(
+  "click",
+  searchBooks
+);
+
+
+searchInput.addEventListener(
+  "keydown",
+  function (event) {
+
+    if (event.key === "Enter") {
+
+      searchBooks();
+
+    }
+
+  }
+);
+
+
+
+
+
+const params = new URLSearchParams(window.location.search);
+const searchQuery = params.get("search");
+
+if (searchQuery) {
+
+    searchInput.value = searchQuery;
+    getBooks(searchQuery);
+
+} else {
+
+    getBooks("books");
+
+}
+
+
+
+

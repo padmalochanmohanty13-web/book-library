@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -17,9 +17,7 @@
     <!-- NAVBAR -->
 
     <header class="navbar">
-        <div class="logo">
-            📚 BookStore
-        </div>
+        <div class="logo">📚 BookStore</div>
 
         <nav class="nav-links">
 
@@ -27,13 +25,9 @@
                 Home
             </a>
 
-            <a href="pages/categories.html">
-                Categories
-            </a>
+            <a href="pages/categories.html"> Categories </a>
 
-            <a href="pages/books.html">
-                All Books
-            </a>
+            <a href="books.html" class="active"> All Books </a>
 
             <a href="#">
                 About
@@ -52,7 +46,6 @@
         <h1>All Books</h1>
     </div>
 
-
     <!-- Search Section -->
 
     <section class="search-section">
@@ -64,15 +57,11 @@
             <input type="text" id="searchInput" placeholder="Search books by title or author...">
 
             <button id="searchBtn">
-
                 <i class="fa-solid fa-magnifying-glass"></i>
 
                 Search
-
             </button>
-
         </div>
-
     </section>
 
     <!-- Books -->
@@ -81,9 +70,6 @@
         <div id="booksContainer" class="books-grid"></div>
 
     </main>
-
-
-
 
     <script src="../js/books.js"></script>
 </body>
