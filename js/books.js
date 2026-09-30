@@ -24,7 +24,7 @@ async function getBooks(query) {
      let startIndex = 0;
 
     const res = await fetch(
-      `${URL}?q=${encodeURIComponent(query)}&maxResults=40&startIndex=${startIndex}&key=${API_KEY}`,
+      `${URL}?q=${encodeURIComponent(query)}&maxResults=40&startIndex=${startIndex}&key=${AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE}`,
     );
 
     console.log("Response:", res);
