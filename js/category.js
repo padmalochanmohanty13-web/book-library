@@ -2,10 +2,23 @@
 // GOOGLE BOOKS API
 // ======================================================
 
+// const API_URL = "https://www.googleapis.com/books/v1/volumes";
+
+// const API_KEY = "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
+
+// CATEGORIES
+
+// ======================================================
+// GOOGLE BOOKS API
+// ======================================================
+
 const API_URL = "https://www.googleapis.com/books/v1/volumes";
 
-const API_KEY = "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
+// IMPORTANT:
+// Replace this with your own Google Books API key.
 
+// const API_KEY = "YOUR_API_KEY_HERE";
+const API_KEY = "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
 // ======================================================
 // CATEGORIES
 // ======================================================
@@ -13,32 +26,32 @@ const API_KEY = "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
 const categories = [
   {
     name: "Fiction",
-    query: "fiction",
+    query: "fiction books",
     description: "Imaginative stories, novels and literary works.",
   },
 
   {
     name: "Romance",
-    query: "romance",
+    query: "romance books",
     description: "Stories about love, relationships and emotional connections.",
   },
 
   {
     name: "Mystery",
-    query: "mystery",
+    query: "mystery books",
     description: "Detective stories, mysteries and crime investigations.",
   },
 
   {
     name: "Science Fiction",
-    query: "science fiction",
+    query: "science fiction books",
     description:
       "Stories about science, technology, space and futuristic worlds.",
   },
 
   {
     name: "Fantasy",
-    query: "fantasy",
+    query: "fantasy books",
     description:
       "Magical worlds, mythical creatures and supernatural adventures.",
   },
@@ -70,6 +83,8 @@ const bookLoading = document.getElementById("bookLoading");
 
 const noBooks = document.getElementById("noBooks");
 
+const cartCount = document.querySelector(".cart-count");
+
 // ======================================================
 // LOAD CATEGORIES
 // ======================================================
@@ -92,7 +107,7 @@ async function loadCategories() {
 
 async function getCategoryBookImage(category) {
   try {
-    const apiURL = `${API_URL}?q=subject:${encodeURIComponent(category)}&maxResults=5&key=${API_KEY}`;
+    const apiURL = `${API_URL}?q=${encodeURIComponent(category)}&maxResults=5&key=${API_KEY}`;
 
     const response = await fetch(apiURL);
 
@@ -133,42 +148,40 @@ function createCategoryCard(category, image) {
 
   card.innerHTML = `
 
-        <img
-            src="${image}"
-            alt="${category.name}"
-            class="category-image"
-        >
+    <img
+      src="${image}"
+      alt="${category.name}"
+      class="category-image"
+    >
 
+    <div class="category-info">
 
-        <div class="category-info">
+      <h3>
+        ${category.name}
+      </h3>
 
-            <h3>
-                ${category.name}
-            </h3>
+      <p>
+        ${category.description}
+      </p>
 
+      <button
+        class="category-btn"
+        type="button"
+      >
 
-            <p>
-                ${category.description}
-            </p>
+        Explore Books
 
+        <i class="fa-solid fa-arrow-right"></i>
 
-            <button
-                class="category-btn"
-            >
+      </button>
 
-                Explore Books
+    </div>
 
-                <i class="fa-solid fa-arrow-right"></i>
+  `;
 
-            </button>
-
-        </div>
-
-    `;
-
-  // ==================================================
+  // ====================================================
   // EXPLORE BUTTON
-  // ==================================================
+  // ====================================================
 
   const exploreButton = card.querySelector(".category-btn");
 
@@ -178,13 +191,15 @@ function createCategoryCard(category, image) {
     loadCategoryBooks(category.query, category.name);
   });
 
-  // ==================================================
-  // CLICK CATEGORY CARD
-  // ==================================================
+  // ====================================================
+  // CLICK CARD
+  // ====================================================
 
   card.addEventListener("click", function () {
     loadCategoryBooks(category.query, category.name);
   });
+
+  // ADD CARD TO PAGE
 
   categoryContainer.appendChild(card);
 }
@@ -213,9 +228,21 @@ async function loadCategoryBooks(category, categoryName) {
   booksSubHeading.textContent = `Explore 20 books from the ${categoryName} category.`;
 
   try {
-    const apiURL = `${API_URL}?q=subject:${encodeURIComponent(category)}&maxResults=20&startIndex=0&key=${API_KEY}`;
+    // ==================================================
+    // GOOGLE BOOKS API
+    // ==================================================
+
+    const apiURL = `${API_URL}?q=${encodeURIComponent(category)}&maxResults=20&startIndex=0&key=${API_KEY}`;
+
+    console.log("Loading category:", categoryName);
+
+    console.log("API URL:", apiURL);
 
     const response = await fetch(apiURL);
+
+    // ==================================================
+    // CHECK RESPONSE
+    // ==================================================
 
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
@@ -223,36 +250,45 @@ async function loadCategoryBooks(category, categoryName) {
 
     const data = await response.json();
 
+    console.log("Books received:", data);
+
     // HIDE LOADING
 
     bookLoading.style.display = "none";
 
+    // ==================================================
     // CHECK BOOKS
+    // ==================================================
 
     if (!data.items || data.items.length === 0) {
-      noBooks.textContent = "No books found for this category.";
+      noBooks.textContent = `No books found for ${categoryName}.`;
 
       noBooks.style.display = "block";
 
       return;
     }
 
-    // MAXIMUM 20 BOOKS
+    // ==================================================
+    // GET MAXIMUM 20 BOOKS
+    // ==================================================
 
     const books = data.items.slice(0, 20);
 
+    // ==================================================
     // CREATE BOOK CARDS
+    // ==================================================
 
     books.forEach(function (book) {
       createBookCard(book);
     });
 
     // ==================================================
-    // SCROLL TO CATEGORY BOOK SECTION
+    // SCROLL TO BOOK SECTION
     // ==================================================
 
     categoryBooksSection.scrollIntoView({
       behavior: "smooth",
+
       block: "start",
     });
   } catch (error) {
@@ -334,7 +370,7 @@ function createBookCard(book) {
   const price = getBookPrice(saleInfo);
 
   // ==================================================
-  // CREATE CARD
+  // CREATE BOOK CARD
   // ==================================================
 
   const bookCard = document.createElement("div");
@@ -343,123 +379,95 @@ function createBookCard(book) {
 
   bookCard.innerHTML = `
 
-        <img
-            src="${image}"
-            alt="${title}"
-            class="book-image"
+    <img
+      src="${image}"
+      alt="${title}"
+      class="book-image"
+    >
+
+    <div class="book-info">
+
+      <h3>
+        ${title}
+      </h3>
+
+      <p class="book-author">
+
+        <strong>
+          Author:
+        </strong>
+
+        ${authors}
+
+      </p>
+
+      <p class="book-description">
+
+        ${description}
+
+      </p>
+
+      <p class="book-publisher">
+
+        <strong>
+          Publisher:
+        </strong>
+
+        ${publisher}
+
+      </p>
+
+      <p class="book-date">
+
+        <strong>
+          Published:
+        </strong>
+
+        ${publishedDate}
+
+      </p>
+
+      <p class="book-price">
+
+        <strong>
+          Price:
+        </strong>
+
+        ${formatPrice(price)}
+
+      </p>
+
+      <div class="book-buttons">
+
+       
+
+
+        <button
+          class="add-cart-btn"
+          type="button"
         >
 
+          <i class="fa-solid fa-cart-plus"></i>
 
-        <div class="book-info">
+          Add to Cart
 
-            <h3>
-                ${title}
-            </h3>
+        </button>
 
+      </div>
 
-            <p class="book-author">
+    </div>
 
-                <strong>
-                    Author:
-                </strong>
-
-                ${authors}
-
-            </p>
-
-
-            <p class="book-description">
-
-                ${description}
-
-            </p>
-
-
-            <p class="book-publisher">
-
-                <strong>
-                    Publisher:
-                </strong>
-
-                ${publisher}
-
-            </p>
-
-
-            <p class="book-date">
-
-                <strong>
-                    Published:
-                </strong>
-
-                ${publishedDate}
-
-            </p>
-
-
-            <p class="book-price">
-
-                <strong>
-                    Price:
-                </strong>
-
-                ${formatPrice(price)}
-
-            </p>
-
-
-            <div class="book-buttons">
-
-
-                <button
-                    class="details-btn"
-                    type="button"
-                >
-
-                    <i class="fa-solid fa-eye"></i>
-
-                    Details
-
-                </button>
-
-
-                <button
-                    class="add-cart-btn"
-                    type="button"
-                >
-
-                    <i class="fa-solid fa-cart-plus"></i>
-
-                    Add to Cart
-
-                </button>
-
-
-            </div>
-
-        </div>
-
-    `;
+  `;
 
   // ==================================================
-  // DETAILS BUTTON
-  // ==================================================
-
-  const detailsButton = bookCard.querySelector(".details-btn");
-
-  detailsButton.addEventListener("click", function (event) {
-    event.stopPropagation();
-
-    window.location.href = `book-details.html?id=${encodeURIComponent(bookId)}`;
-  });
-
-  // ==================================================
-  // IMAGE CLICK → DETAILS
+  // IMAGE → DETAILS
   // ==================================================
 
   const bookImage = bookCard.querySelector(".book-image");
 
-  bookImage.addEventListener("click", function () {
+  bookImage.addEventListener("click", function (event) {
+    event.stopPropagation();
+
     window.location.href = `book-details.html?id=${encodeURIComponent(bookId)}`;
   });
 
@@ -476,7 +484,7 @@ function createBookCard(book) {
   });
 
   // ==================================================
-  // ADD BOOK CARD TO PAGE
+  // ADD CARD TO PAGE
   // ==================================================
 
   categoryBooksContainer.appendChild(bookCard);
@@ -523,13 +531,15 @@ function addToCart(book, price, image) {
   let cart = JSON.parse(localStorage.getItem("bookCart")) || [];
 
   // ==================================================
-  // CHECK IF BOOK ALREADY EXISTS
+  // CHECK EXISTING BOOK
   // ==================================================
 
-  const existingBook = cart.find((item) => item.id === book.id);
+  const existingBook = cart.find(function (item) {
+    return item.id === book.id;
+  });
 
   // ==================================================
-  // IF ALREADY EXISTS
+  // EXISTING BOOK
   // ==================================================
 
   if (existingBook) {
@@ -562,6 +572,10 @@ function addToCart(book, price, image) {
   // ==================================================
 
   localStorage.setItem("bookCart", JSON.stringify(cart));
+
+  // UPDATE CART COUNT
+
+  updateCartCount();
 
   // ==================================================
   // GO TO CART
@@ -605,7 +619,31 @@ categorySearch.addEventListener("input", function () {
 });
 
 // ======================================================
+// UPDATE CART COUNT
+// ======================================================
+
+function updateCartCount() {
+  if (!cartCount) {
+    return;
+  }
+
+  const cart = JSON.parse(localStorage.getItem("bookCart")) || [];
+
+  let totalQuantity = 0;
+
+  cart.forEach(function (item) {
+    totalQuantity += Number(item.quantity) || 1;
+  });
+
+  cartCount.textContent = totalQuantity;
+}
+
+// ======================================================
 // START APPLICATION
 // ======================================================
 
 loadCategories();
+
+// UPDATE CART COUNT WHEN PAGE LOADS
+
+updateCartCount();
