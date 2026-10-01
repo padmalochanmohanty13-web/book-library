@@ -63,8 +63,9 @@ const urlParams =
         window.location.search
     );
 
-const bookId =
-    urlParams.get("id");
+const bookId =  urlParams.get("id");
+
+let currentBook = null;
 
 
 console.log("================================");
@@ -125,8 +126,9 @@ async function getBookDetails(id) {
         }
 
 
-        const data =
-            await response.json();
+        const data = await response.json();
+
+        currentBook = data;
 
 
         console.log(
@@ -388,8 +390,11 @@ function showError(message) {
 
 }
 
-// CART
 
+
+// ======================================================
+// ADD TO CART
+// ======================================================
 
 if (addCartBtn) {
 
@@ -397,9 +402,142 @@ if (addCartBtn) {
         "click",
         function () {
 
-            alert(
-                "Book added to cart!"
+            if (!currentBook) {
+
+                alert(
+                    "Book details are not loaded yet."
+                );
+
+                return;
+
+            }
+
+
+            const info =
+                currentBook.volumeInfo || {};
+
+            const saleInfo =
+                currentBook.saleInfo || {};
+
+
+            // GET EXISTING CART
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem("bookCart")
+                ) || [];
+
+
+            // CHECK IF BOOK ALREADY EXISTS
+
+            const existingBook =
+                cart.find(
+                    item =>
+                        item.id === currentBook.id
+                );
+
+
+            // IF BOOK ALREADY EXISTS
+            // INCREASE QUANTITY
+
+            if (existingBook) {
+
+                existingBook.quantity =
+                    (Number(existingBook.quantity) || 1) + 1;
+
+            }
+
+
+            // IF BOOK DOES NOT EXIST
+            // ADD NEW BOOK
+
+            else {
+
+                // GET IMAGE
+
+                let image =
+                    info.imageLinks?.thumbnail ||
+                    info.imageLinks?.smallThumbnail;
+
+
+                if (!image) {
+
+                    image =
+                        "https://via.placeholder.com/300x400?text=No+Image";
+
+                }
+
+
+                image =
+                    image.replace(
+                        "http://",
+                        "https://"
+                    );
+
+
+                // GET PRICE
+
+                const googlePrice =
+                    saleInfo.retailPrice ||
+                    saleInfo.listPrice;
+
+
+                let price = 399;
+
+
+                if (
+                    googlePrice &&
+                    typeof googlePrice.amount === "number"
+                ) {
+
+                    price =
+                        googlePrice.amount;
+
+                }
+
+
+                // ADD BOOK
+
+                cart.push({
+
+                    id:
+                        currentBook.id,
+
+                    title:
+                        info.title ||
+                        "Unknown Title",
+
+                    author:
+                        info.authors
+                            ? info.authors.join(", ")
+                            : "Unknown Author",
+
+                    image:
+                        image,
+
+                    price:
+                        price,
+
+                    quantity:
+                        1
+
+                });
+
+            }
+
+
+            // SAVE CART
+
+            localStorage.setItem(
+                "bookCart",
+                JSON.stringify(cart)
             );
+
+
+            // GO TO CART PAGE
+
+            window.location.href =
+                "cart.html";
 
         }
     );

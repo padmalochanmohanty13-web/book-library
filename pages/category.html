@@ -1,264 +1,132 @@
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>BookStore | Categories</title>
 
-    <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/category.css" />
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
-        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-</head>
-
-
-<body>
-
-
+  <body>
     <header class="navbar">
+      <div class="logo">📚 BookStore</div>
 
-        <div class="logo">
-            📚 BookStore
-        </div>
+      <nav class="nav-links">
+        <a href="../index.html"> Home </a>
 
+        <a href="category.html" class="active"> Categories </a>
 
-        <nav class="nav-links">
+        <a href="books.html"> All Books </a>
 
-            <a href="../index.html">
-                Home
-            </a>
+        <a href="#"> About </a>
+      </nav>
 
-            <a href="category.html" class="active">
-                Categories
-            </a>
-
-            <a href="books.html">
-                All Books
-            </a>
-
-            <a href="#">
-                About
-            </a>
-
-        </nav>
-
-
-        <div class="cart">
-
-            <button onclick="window.location.href='cart.html'">
-
-                <i class="fa-solid fa-cart-shopping"></i>
-
-            </button>
-
-        </div>
-
+      <div class="cart">
+        <button onclick="window.location.href = 'cart.html'">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
     </header>
 
-<!-- Hero -->
-
-
+    <!-- Hero -->
 
     <!-- ================= CATEGORY SECTION ================= -->
 
     <section class="categories-section">
+      <div class="section-heading">
+        <p>BROWSE</p>
 
+        <h2>Explore Categories</h2>
 
-        <div class="section-heading">
+        <span> Find books based on your interests. </span>
+      </div>
 
-            <p>
-                BROWSE
-            </p>
+      <!-- ================= SEARCH CATEGORY ================= -->
 
-            <h2>
-                Explore Categories
-            </h2>
+      <div class="category-search">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
 
-            <span>
-                Find books based on your interests.
-            </span>
-
+          <input
+            type="text"
+            id="categorySearch"
+            placeholder="Search category..."
+          />
         </div>
+      </div>
 
+      <!-- ================= CATEGORY CARDS ================= -->
 
+      <div id="categoryContainer" class="category-container">
+        <!-- JavaScript will create categories -->
+      </div>
 
-        <!-- ================= SEARCH CATEGORY ================= -->
-
-        <div class="category-search">
-
-            <div class="search-box">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <input
-                    type="text"
-                    id="categorySearch"
-                    placeholder="Search category..."
-                >
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= CATEGORY CARDS ================= -->
-
-        <div
-            id="categoryContainer"
-            class="category-container">
-
-            <!-- JavaScript will create categories -->
-
-        </div>
-
-
- <!-- NO CATEGORY -->
-        <p
-            id="noCategory"
-            class="no-category">
-
-            No category found.
-
-        </p>
-
-
+      <!-- NO CATEGORY -->
+      <p id="noCategory" class="no-category">No category found.</p>
     </section>
-
-
 
     <!-- CATEGORY BOOKS SECTION -->
-    <section
-        class="category-books-section"
-        id="categoryBooksSection">
+    <section class="category-books-section" id="categoryBooksSection">
+      <div class="section-heading">
+        <p id="selectedCategoryTitle">SELECT A CATEGORY</p>
 
+        <h2 id="booksHeading">Category Books</h2>
 
-        <div class="section-heading">
+        <span id="booksSubHeading"> Click a category above to see books. </span>
+      </div>
 
-            <p id="selectedCategoryTitle">
-                SELECT A CATEGORY
-            </p>
+      <!-- BOOK CONTAINER -->
+      <div id="categoryBooksContainer" class="category-books-container">
+        <!-- 20 books will appear here -->
+      </div>
 
-            <h2 id="booksHeading">
-                Category Books
-            </h2>
+      <!-- Loding -->
+      <p id="bookLoading" class="book-loading">Loading books...</p>
 
-            <span id="booksSubHeading">
-                Click a category above to see books.
-            </span>
-
-        </div>
-
-<!-- BOOK CONTAINER -->
-        <div
-            id="categoryBooksContainer"
-            class="category-books-container">
-
-            <!-- 20 books will appear here -->
-
-        </div>
-
-
-<!-- Loding -->
-        <p
-            id="bookLoading"
-            class="book-loading">
-
-            Loading books...
-
-        </p>
-
-     <!-- NO BOOKS -->
-        <p
-            id="noBooks"
-            class="no-books">
-
-            No books found for this category.
-
-        </p>
-
-
+      <!-- NO BOOKS -->
+      <p id="noBooks" class="no-books">No books found for this category.</p>
     </section>
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="footer">
+      <div class="footer-column">
+        <h2>📚 BookStore</h2>
 
+        <p>Discover your next favorite book and explore amazing stories.</p>
+      </div>
 
-        <div class="footer-column">
+      <div class="footer-column">
+        <h3>Quick Links</h3>
 
-            <h2>
-                📚 BookStore
-            </h2>
+        <a href="../index.html"> Home </a>
 
-            <p>
-                Discover your next favorite book
-                and explore amazing stories.
-            </p>
+        <a href="category.html"> Categories </a>
 
-        </div>
+        <a href="books.html"> All Books </a>
+      </div>
 
+      <div class="footer-column">
+        <h3>Contact</h3>
 
+        <p>bookstore@gmail.com</p>
 
-        <div class="footer-column">
-
-            <h3>
-                Quick Links
-            </h3>
-
-            <a href="../index.html">
-                Home
-            </a>
-
-            <a href="category.html">
-                Categories
-            </a>
-
-            <a href="books.html">
-                All Books
-            </a>
-
-        </div>
-
-
-
-        <div class="footer-column">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                bookstore@gmail.com
-            </p>
-
-            <p>
-                +91 9777118625
-            </p>
-
-        </div>
-
-
+        <p>+91 9777118625</p>
+      </div>
     </footer>
 
-
-    <div class="copyright">
-
-        © 2026 BookStore. All rights reserved.
-
-    </div>
-
+    <div class="copyright">© 2026 BookStore. All rights reserved.</div>
 
     <script src="../js/category.js"></script>
-
-</body>
-
+  </body>
 </html>
