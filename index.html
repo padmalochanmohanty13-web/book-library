@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookStore | Home</title>
+
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+      <div class="logo">📚 BookStore</div>
+
+      <nav class="nav-links">
+        <a href="index.html" class="active"> Home </a>
+
+        <a href="pages/category.html"> Categories </a>
+
+        <a href="pages/books.html"> All Books </a>
+
+        <a href="pages/about.html"> About </a>
+      </nav>
+
+      <div class="cart">
+        <button onclick="window.location.href = 'pages/cart.html'">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-small-title">WELCOME TO BOOKSTORE</p>
+
+        <h1>
+          Discover Your
+          <span>Favorite Book</span>
+        </h1>
+
+        <p class="hero-description">
+          Explore thousands of books, discover new authors and find stories that
+          inspire you.
+        </p>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for books..."
+          />
+
+          <button id="searchBtn" type="button">🔍 Search</button>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="pages/books.html" class="primary-btn"> Explore Books </a>
+
+          <a href="pages/category.html" class="secondary-btn">
+            Browse Categories
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="book-stack">
+          <img src="./images/books.webp" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories-section">
+      <div class="section-heading">
+        <p>EXPLORE</p>
+
+        <h2>Categories</h2>
+
+        <span> Find books based on your interests. </span>
+      </div>
+
+      <div id="categoryContainer" class="category-container">
+        <!-- Categories will be created by JavaScript -->
+      </div>
+      <div class="viewall">
+        <a href="pages/category.html" class="secondary-btn">
+          view all<i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED BOOKS ================= -->
+
+    <section class="featured-section">
+      <div class="section-heading">
+        <p>OUR COLLECTION</p>
+
+        <h2>Featured Books</h2>
+
+        <span> Some popular books you might enjoy. </span>
+      </div>
+
+      <div id="featuredBooks" class="books-container">
+        <p class="loading">Loading books...</p>
+      </div>
+
+      <div class="view-all">
+        <a href="pages/books.html"> View All Books → </a>
+      </div>
+    </section>
+
+    <!-- ================= WHY BOOKSTORE ================= -->
+
+    <section class="features-section">
+      <div class="section-heading">
+        <p>WHY BOOKSTORE</p>
+
+        <h2>Everything You Need</h2>
+      </div>
+
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+
+          <h3>Huge Collection</h3>
+
+          <p>Explore books from different categories and authors.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+
+          <h3>Easy Search</h3>
+
+          <p>Quickly find your favorite books using our search.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛒</div>
+
+          <h3>Easy Shopping</h3>
+
+          <p>Add books to your cart and manage your collection easily.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+
+          <h3>Discover More</h3>
+
+          <p>Discover interesting books and new authors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+      <div class="footer-column">
+        <h2>📚 BookStore</h2>
+
+        <p>Discover your next favorite book and explore amazing stories.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+
+        <a href="index.html"> Home </a>
+
+        <a href="pages/categories.html"> Categories </a>
+
+        <a href="pages/books.html"> All Books </a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+
+        <p>bookstore@gmail.com</p>
+
+        <p>+91 9777118625</p>
+      </div>
+    </footer>
+
+    <div class="copyright">© 2026 BookStore. All rights reserved.</div>
+
+    <script src="js/home.js"></script>
+  </body>
+</html>
