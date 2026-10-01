@@ -1,36 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Details | BookStore</title>
-    <link rel="stylesheet" href="../css/books-details.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="../css/books-details.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- NAVBAR -->
     <header class="navbar">
-        <div class="logo">
-            📚 BookStore
-        </div>
-        <nav class="nav-links">
-            <a href="index.html">
-                Home
-            </a>
-            <a href="category.html">
-                Categories
-            </a>
-            <a href="books.html">
-                All Books
-            </a>
-            <a href="#">
-                About
-            </a>
-        </nav>
-       <div class="cart">
+      <div class="logo">📚 BookStore</div>
+      <nav class="nav-links">
+        <a href="index.html"> Home </a>
+        <a href="category.html"> Categories </a>
+        <a href="books.html"> All Books </a>
+        <a href="about.html"> About </a>
+      </nav>
+      <div class="cart">
         <button onclick="window.location.href = 'pages/cart.html'">
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
@@ -39,165 +30,95 @@
 
     <!-- MAIN -->
     <main class="details-container">
-        <!-- BACK -->
-        <a href="books.html" class="back-btn">
-            <i class="fa-solid fa-arrow-left"></i>
-            Back to Books
-        </a>
+      <!-- BACK -->
+      <a href="books.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Books
+      </a>
 
+      <!-- LOADING -->
 
-        <!-- LOADING -->
+      <div id="loading" class="loading">Loading book details...</div>
 
-        <div id="loading" class="loading">
+      <!-- ERROR -->
 
-            Loading book details...
+      <div id="error" class="error" style="display: none">
+        Book details could not be loaded.
+      </div>
 
+      <!-- BOOK DETAILS -->
+
+      <section
+        id="bookDetails"
+        class="book-details-container"
+        style="display: none"
+      >
+        <!-- IMAGE -->
+
+        <div class="book-image-section">
+          <img id="bookImage" src="" alt="Book Cover" />
         </div>
 
+        <!-- INFORMATION -->
 
-        <!-- ERROR -->
+        <div class="book-info">
+          <span id="bookCategory" class="book-category"> General </span>
 
-        <div id="error" class="error" style="display: none;">
+          <h1 id="bookTitle">Book Title</h1>
 
-            Book details could not be loaded.
+          <p class="author">
+            <strong>Author:</strong>
 
+            <span id="bookAuthor"> Unknown Author </span>
+          </p>
+
+          <p class="rating">
+            <strong>Rating:</strong>
+
+            <span id="bookRating"> No Rating </span>
+          </p>
+
+          <h2 id="bookPrice" class="price">₹399</h2>
+
+          <div class="description">
+            <h3>Description</h3>
+
+            <p id="bookDescription">Loading description...</p>
+          </div>
+
+          <div class="book-information">
+            <div>
+              <strong> Publisher </strong>
+
+              <span id="bookPublisher"> N/A </span>
+            </div>
+
+            <div>
+              <strong> Published Date </strong>
+
+              <span id="bookDate"> N/A </span>
+            </div>
+
+            <div>
+              <strong> Pages </strong>
+
+              <span id="bookPages"> N/A </span>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button id="addCartBtn" class="add-cart-btn">
+              <i class="fa-solid fa-cart-plus"></i>
+
+              Add to Cart
+            </button>
+          </div>
         </div>
-
-
-        <!-- BOOK DETAILS -->
-
-        <section id="bookDetails" class="book-details-container" style="display: none;">
-
-
-            <!-- IMAGE -->
-
-            <div class="book-image-section">
-
-                <img id="bookImage" src="" alt="Book Cover">
-
-            </div>
-
-
-            <!-- INFORMATION -->
-
-            <div class="book-info">
-
-
-                <span id="bookCategory" class="book-category">
-                    General
-                </span>
-
-
-                <h1 id="bookTitle">
-                    Book Title
-                </h1>
-
-
-                <p class="author">
-
-                    <strong>Author:</strong>
-
-                    <span id="bookAuthor">
-                        Unknown Author
-                    </span>
-
-                </p>
-
-
-                <p class="rating">
-
-                    <strong>Rating:</strong>
-
-                    <span id="bookRating">
-                        No Rating
-                    </span>
-
-                </p>
-
-
-                <h2 id="bookPrice" class="price">
-                    ₹399
-                </h2>
-
-
-                <div class="description">
-
-                    <h3>
-                        Description
-                    </h3>
-
-                    <p id="bookDescription">
-                        Loading description...
-                    </p>
-
-                </div>
-
-
-                <div class="book-information">
-
-                    <div>
-
-                        <strong>
-                            Publisher
-                        </strong>
-
-                        <span id="bookPublisher">
-                            N/A
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Published Date
-                        </strong>
-
-                        <span id="bookDate">
-                            N/A
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            Pages
-                        </strong>
-
-                        <span id="bookPages">
-                            N/A
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="buttons">
-
-                    <button id="addCartBtn" class="add-cart-btn">
-
-                        <i class="fa-solid fa-cart-plus"></i>
-
-                        Add to Cart
-
-                    </button>
-                </div>
-
-            </div>
-
-        </section>
-
+      </section>
     </main>
-
 
     <!-- IMPORTANT -->
 
     <script src="../js/book-details.js"></script>
-
-</body>
-
+  </body>
 </html>
