@@ -1,72 +1,48 @@
 * {
   margin: 0;
-
   padding: 0;
-
   box-sizing: border-box;
 }
 
-/* =====================================================
-   BODY
-===================================================== */
+/* BODY */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-
   background-color: #f5f6f8;
-
   color: #222;
-
   line-height: 1.5;
 }
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* NAVBAR */
 
 .navbar {
   width: 100%;
-
   padding: 18px 7%;
-
   background-color: #ffffff;
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   border-bottom: 1px solid #e5e5e5;
-
   position: sticky;
-
   top: 0;
-
   z-index: 100;
 }
 
 .logo {
   font-size: 24px;
-
   font-weight: bold;
 }
 
 .nav-links {
   display: flex;
-
   align-items: center;
-
   gap: 30px;
 }
 
 .nav-links a {
   text-decoration: none;
-
   color: #444;
-
   font-size: 15px;
-
   transition: 0.3s;
 }
 
@@ -76,31 +52,20 @@ body {
 
 .nav-links a.active {
   color: #6c63ff;
-
   font-weight: bold;
 }
 
-/* =====================================================
-   CART
-===================================================== */
+/* CART */
 
 .cart button {
   font-size: 20px;
-
   background-color: #6c63ff;
-
   cursor: pointer;
-
   height: 35px;
-
   width: 50px;
-
   border-radius: 8px;
-
   border: none;
-
   color: white;
-
   transition: 0.3s;
 }
 
@@ -108,23 +73,15 @@ body {
   background-color: #574fd6;
 }
 
-/* =====================================================
-   HERO
-===================================================== */
+/* HERO */
 
 .category-hero {
   min-height: 330px;
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   text-align: center;
-
   padding: 60px 8%;
-
   background-color: white;
 }
 
@@ -134,21 +91,15 @@ body {
 
 .small-title {
   color: #6c63ff;
-
   font-size: 14px;
-
   font-weight: bold;
-
   letter-spacing: 2px;
-
   margin-bottom: 15px;
 }
 
 .category-hero h1 {
   font-size: 52px;
-
   line-height: 1.2;
-
   margin-bottom: 20px;
 }
 
@@ -158,171 +109,115 @@ body {
 
 .category-hero p:last-child {
   color: #666;
-
   font-size: 17px;
-
   max-width: 650px;
-
   margin: auto;
 }
 
-/* =====================================================
-   CATEGORY SECTION
-===================================================== */
+/* CATEGORY SECTION*/
 
 .categories-section {
   padding: 80px 8%;
-
   background-color: #f5f6f8;
-
   min-height: 600px;
 }
 
-/* =====================================================
-   SECTION HEADING
-===================================================== */
+/*  SCTION HEADING */
 
 .section-heading {
   text-align: center;
-
   margin-bottom: 35px;
 }
 
 .section-heading p {
   color: #6c63ff;
-
   font-size: 13px;
-
   font-weight: bold;
-
   letter-spacing: 2px;
-
   margin-bottom: 8px;
 }
 
 .section-heading h2 {
   font-size: 34px;
-
   margin-bottom: 8px;
 }
 
 .section-heading span {
   color: #777;
-
   font-size: 15px;
 }
 
-/* =====================================================
-   CATEGORY SEARCH
-===================================================== */
+/*  CATEGORY SEARCH */
 
 .category-search {
   display: flex;
-
   justify-content: center;
-
   margin-bottom: 40px;
 }
 
 .search-box {
   width: 100%;
-
   max-width: 500px;
-
   height: 50px;
-
   background-color: white;
-
   border: 1px solid #ddd;
-
   border-radius: 8px;
-
   display: flex;
-
   align-items: center;
-
   padding: 0 18px;
-
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
 .search-box i {
   color: #6c63ff;
-
   margin-right: 12px;
-
   font-size: 17px;
 }
 
 .search-box input {
   flex: 1;
-
   height: 100%;
-
   border: none;
-
   outline: none;
-
   font-size: 15px;
-
   background: transparent;
 }
 
-/* =====================================================
-   CATEGORY CONTAINER
-===================================================== */
+/* CATEGORY CONTAINER */
 
 .category-container {
   display: grid;
-
   grid-template-columns: repeat(5, 1fr);
-
   gap: 25px;
 }
 
-/* =====================================================
-   CATEGORY CARD
-===================================================== */
+/* CATEGORY CARD */
 
 .category-card {
   background-color: white;
-
   border-radius: 12px;
-
   overflow: hidden;
-
   cursor: pointer;
-
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-
   transition: 0.3s;
-
   border: 1px solid #eee;
 }
 
 .category-card:hover {
   transform: translateY(-7px);
-
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* =====================================================
-   CATEGORY IMAGE
-===================================================== */
+/*  CATEGORY IMAGE */
 
 .category-image {
   width: 100%;
-
   height: 180px;
-
   object-fit: cover;
-
   display: block;
 }
 
-/* =====================================================
-   CATEGORY INFO
-===================================================== */
+/* CATEGORY INFO*/
 
 .category-info {
   padding: 20px;
@@ -330,45 +225,29 @@ body {
 
 .category-info h3 {
   font-size: 20px;
-
   margin-bottom: 8px;
-
   color: #222;
 }
 
 .category-info p {
   color: #777;
-
   font-size: 14px;
-
   line-height: 1.5;
-
   min-height: 65px;
 }
 
-/* =====================================================
-   CATEGORY BUTTON
-===================================================== */
+/* CATEGORY BUTTON */
 
 .category-btn {
   display: inline-block;
-
   margin-top: 15px;
-
   padding: 9px 16px;
-
   background-color: #6c63ff;
-
   color: white;
-
   border: none;
-
   border-radius: 6px;
-
   font-size: 13px;
-
   cursor: pointer;
-
   transition: 0.3s;
 }
 
@@ -376,43 +255,29 @@ body {
   background-color: #574fd6;
 }
 
-/* =====================================================
-   NO CATEGORY
-===================================================== */
+/* NO CATEGORY */
 
 .no-category {
   display: none;
-
   text-align: center;
-
   color: #777;
-
   padding: 50px;
-
   font-size: 16px;
 }
 
-/* =====================================================
-   CATEGORY BOOKS SECTION
-===================================================== */
+/* CATEGORY BOOKS SECTION */
 
 .category-books-section {
   padding: 80px 8%;
-
   background-color: #ffffff;
-
   min-height: 500px;
 }
 
-/* =====================================================
-   BOOK CONTAINER
-===================================================== */
+/* BOOK CONTAINER */
 
 .category-books-container {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   gap: 25px;
 }
 
@@ -420,25 +285,18 @@ body {
   width: 100%;
   height: 36px;
   margin-top: 15px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   padding: 0 15px;
-
   border: none;
   border-radius: 7px;
-
   background-color: #6c63ff;
   color: white;
-
   cursor: pointer;
-
   font-size: 14px;
   font-weight: bold;
-
   transition: 0.3s;
 }
 
@@ -450,53 +308,40 @@ body {
   margin: 0;
 }
 
-/* =====================================================
-   BOOK CARD
-===================================================== */
+/*BOOK CARD */
+
 .book-card {
   background-color: white;
   border: 1px solid #eeeeee;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   transition: 0.3s;
-
   display: flex;
   flex-direction: column;
 }
 
 .book-card:hover {
   transform: translateY(-7px);
-
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* =====================================================
-   BOOK IMAGE
-===================================================== */
+/* BOOK IMAGE */
 
 .book-image {
   width: 100%;
-
   height: 280px;
-
   object-fit: cover;
-
   display: block;
 }
 
-/* =====================================================
-   BOOK INFO
-===================================================== */
+/* BOOK INFO */
 
 .book-info {
   padding: 18px;
-
   display: flex;
   flex-direction: column;
-
   flex: 1;
 }
 .add-cart-btn {
@@ -505,39 +350,26 @@ body {
 
 .book-info h3 {
   font-size: 18px;
-
   color: #222;
-
   margin-bottom: 8px;
-
   display: -webkit-box;
-
   -webkit-line-clamp: 2;
-
   -webkit-box-orient: vertical;
-
   overflow: hidden;
 }
 
 .book-author {
   color: #6c63ff;
-
   font-size: 14px;
-
   font-weight: bold;
-
   margin-bottom: 10px;
-
   min-height: 21px;
 }
 
 .book-description {
   color: #777;
-
   font-size: 13px;
-
   line-height: 1.5;
-
   min-height: 60px;
 }
 
@@ -545,21 +377,13 @@ body {
 
 .view-book-btn {
   margin-top: 15px;
-
   padding: 9px 15px;
-
   border: none;
-
   border-radius: 6px;
-
   background-color: #6c63ff;
-
   color: white;
-
   cursor: pointer;
-
   font-size: 13px;
-
   transition: 0.3s;
 }
 
@@ -571,13 +395,9 @@ body {
 
 .book-loading {
   display: none;
-
   text-align: center;
-
   padding: 30px;
-
   color: #6c63ff;
-
   font-size: 16px;
 }
 
@@ -585,11 +405,8 @@ body {
 
 .no-books {
   display: none;
-
   text-align: center;
-
   padding: 40px;
-
   color: #777;
 }
 
@@ -597,15 +414,10 @@ body {
 
 .footer {
   background-color: #202124;
-
   color: white;
-
   padding: 50px 8%;
-
   display: grid;
-
   grid-template-columns: 2fr 1fr 1fr;
-
   gap: 40px;
 }
 
@@ -619,19 +431,14 @@ body {
 
 .footer-column p {
   color: #bbb;
-
   margin-bottom: 8px;
 }
 
 .footer-column a {
   display: block;
-
   color: #bbb;
-
   text-decoration: none;
-
   margin-bottom: 8px;
-
   transition: 0.3s;
 }
 
@@ -639,19 +446,13 @@ body {
   color: white;
 }
 
-/* =====================================================
-   COPYRIGHT
-===================================================== */
+/*  COPYRIGHT */
 
 .copyright {
   background-color: #171717;
-
   color: #aaa;
-
   text-align: center;
-
   padding: 15px;
-
   font-size: 13px;
 }
 
@@ -683,9 +484,7 @@ body {
   }
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/*  MOBILE*/
 
 @media (max-width: 700px) {
   .navbar {
@@ -744,7 +543,6 @@ body {
 
   .footer {
     grid-template-columns: 1fr;
-
     text-align: center;
   }
 }
