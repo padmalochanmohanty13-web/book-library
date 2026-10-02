@@ -5,31 +5,31 @@ const API_KEY = "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
 
 const categories = [
   {
-    name: "Fiction",
-    query: "fiction books",
+    name: "Harry Potter",
+    query: "Harry Potter books",
     description: "Imaginative stories, novels and literary works.",
   },
   {
-    name: "Romance",
-    query: "romance books",
-    description: "Stories about love, relationships and emotional connections.",
+    name: "Lord of the Rings",
+    query: "Lord of the Rings books",
+    description: "Epic fantasy adventure set in the world of Middle-earth.",
   },
   {
-    name: "Mystery",
-    query: "mystery books",
-    description: "Detective stories, mysteries and crime investigations.",
+    name: "History",
+    query: "History books",
+    description: "In-depth accounts of past events and civilizations.",
   },
   {
-    name: "Science Fiction",
-    query: "science fiction books",
+    name: "Horror",
+    query: "Horror books",
     description:
-      "Stories about science, technology, space and futuristic worlds.",
+      "Scary and suspenseful stories that evoke fear and unease.",
   },
   {
-    name: "Fantasy",
-    query: "fantasy books",
+    name: "Fifty Shades of Grey",
+    query: "Fifty Shades of Grey books",
     description:
-      "Magical worlds, mythical creatures and supernatural adventures.",
+      "Romantic drama about a young woman and a wealthy businessman.",
   },
 ];
 
