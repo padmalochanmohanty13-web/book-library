@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>BookStore | Categories</title>
+
+    <link rel="stylesheet" href="../css/category.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+      integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo">📚 BookStore</div>
+
+      <nav class="nav-links">
+        <a href="../index.html"> Home </a>
+
+        <a href="category.html" class="active"> Categories </a>
+
+        <a href="books.html"> All Books </a>
+
+        <a href="about.html"> About </a>
+      </nav>
+
+      <div class="cart">
+        <button onclick="window.location.href = 'cart.html'">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+
+    <!-- ================= CATEGORY SECTION ================= -->
+
+    <section class="categories-section">
+      <div class="section-heading">
+        <p>BROWSE</p>
+
+        <h2>Explore Categories</h2>
+
+        <span> Find books based on your interests. </span>
+      </div>
+
+      <!-- ================= SEARCH CATEGORY ================= -->
+
+      <div class="category-search">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+
+          <input
+            type="text"
+            id="categorySearch"
+            placeholder="Search category..."
+          />
+        </div>
+      </div>
+
+      <!-- ================= CATEGORY CARDS ================= -->
+
+      <div id="categoryContainer" class="category-container">
+        <!-- JavaScript will create categories -->
+      </div>
+
+      <!-- NO CATEGORY -->
+      <p id="noCategory" class="no-category">No category found.</p>
+    </section>
+
+    <!-- CATEGORY BOOKS SECTION -->
+    <section class="category-books-section" id="categoryBooksSection">
+      <div class="section-heading">
+        <p id="selectedCategoryTitle">SELECT A CATEGORY</p>
+
+        <h2 id="booksHeading">Category Books</h2>
+
+        <span id="booksSubHeading"> Click a category above to see books. </span>
+      </div>
+
+      <!-- BOOK CONTAINER -->
+      <div id="categoryBooksContainer" class="category-books-container">
+        <!-- 20 books will appear here -->
+      </div>
+
+      <!-- Loding -->
+      <p id="bookLoading" class="book-loading">Loading books...</p>
+
+      <!-- NO BOOKS -->
+      <p id="noBooks" class="no-books">No books found for this category.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-column">
+        <h2>📚 BookStore</h2>
+
+        <p>Discover your next favorite book and explore amazing stories.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+
+        <a href="../index.html"> Home </a>
+
+        <a href="category.html"> Categories </a>
+
+        <a href="books.html"> All Books </a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+
+        <p>bookstore@gmail.com</p>
+
+        <p>+91 9777118625</p>
+      </div>
+    </footer>
+
+    <div class="copyright">© 2026 BookStore. All rights reserved.</div>
+
+    <script src="../js/category.js"></script>
+  </body>
+</html>
