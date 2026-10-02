@@ -187,3 +187,289 @@ searchInput.addEventListener("keydown", function (event) {
         searchFromHome();
     }
 });
+
+
+// ======================================================
+// FEATURED / COLLECTION BOOKS
+// ======================================================
+
+const BOOKS_API_URL =
+    "https://www.googleapis.com/books/v1/volumes";
+
+const BOOKS_API_KEY =
+    "AIzaSyB0TdSemSIomorDlhH5g_E2wokxkRHLilE";
+
+const featuredBooks =
+    document.getElementById("featuredBooks");
+
+
+// LOAD 8 FEATURED BOOKS
+async function loadFeaturedBooks() {
+
+    try {
+
+        featuredBooks.innerHTML = `
+            <p class="loading">Loading books...</p>
+        `;
+
+
+        // Get books from Google Books API
+        const response = await fetch(
+            `${BOOKS_API_URL}?q=books&maxResults=10&key=${BOOKS_API_KEY}`
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `API Error: ${response.status}`
+            );
+
+        }
+
+
+        const data = await response.json();
+
+
+        const books = data.items || [];
+
+
+        if (books.length === 0) {
+
+            featuredBooks.innerHTML = `
+                <p class="loading">
+                    No books found.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        // Clear loading message
+        featuredBooks.innerHTML = "";
+
+
+        // Show only 8 books
+        books.slice(0, 10).forEach(book => {
+
+            createFeaturedBookCard(book);
+
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Featured books error:",
+            error
+        );
+
+
+        featuredBooks.innerHTML = `
+            <p class="loading">
+                Unable to load books.
+            </p>
+        `;
+    }
+}
+
+
+
+// ======================================================
+// CREATE BOOK CARD
+// ======================================================
+
+function createFeaturedBookCard(book) {
+
+    const info =
+        book.volumeInfo || {};
+
+    const saleInfo =
+        book.saleInfo || {};
+
+
+    // TITLE
+    const title =
+        info.title ||
+        "Unknown Title";
+
+
+    // AUTHOR
+    const author =
+        info.authors &&
+        info.authors.length > 0
+            ? info.authors.join(", ")
+            : "Unknown Author";
+
+
+    // CATEGORY
+    const category =
+        info.categories &&
+        info.categories.length > 0
+            ? info.categories[0]
+            : "General";
+
+
+    // IMAGE
+    let image =
+        info.imageLinks?.thumbnail ||
+        info.imageLinks?.smallThumbnail;
+
+
+    if (!image) {
+
+        image =
+            "https://via.placeholder.com/300x400?text=No+Image";
+
+    }
+
+
+    image =
+        image.replace(
+            "http://",
+            "https://"
+        );
+
+
+    // PRICE
+    const googlePrice =
+        saleInfo.retailPrice ||
+        saleInfo.listPrice;
+
+
+    let price = "₹399";
+
+
+    if (
+        googlePrice &&
+        typeof googlePrice.amount === "number"
+    ) {
+
+        price = formatFeaturedPrice(
+            googlePrice.amount,
+            googlePrice.currencyCode || "INR"
+        );
+
+    }
+
+
+    // CREATE CARD
+    const card =
+        document.createElement("div");
+
+    card.classList.add(
+        "featured-book-card"
+    );
+
+
+    card.innerHTML = `
+
+        <!-- BOOK IMAGE -->
+
+        <div class="featured-book-image">
+
+            <img
+                src="${image}"
+                alt="${escapeHTML(title)}"
+            >
+
+        </div>
+
+
+        <!-- BOOK INFORMATION -->
+
+        <div class="featured-book-info">
+
+            <span class="featured-book-category">
+                ${escapeHTML(category)}
+            </span>
+
+
+            <h3
+                class="featured-book-title"
+                title="${escapeHTML(title)}"
+            >
+                ${escapeHTML(title)}
+            </h3>
+
+
+            <p class="featured-book-author">
+                ${escapeHTML(author)}
+            </p>
+
+
+            <div class="featured-book-bottom">
+
+                <strong class="featured-book-price">
+                    ${price}
+                </strong>
+
+
+                <a
+                    href="pages/book-details.html?id=${encodeURIComponent(book.id)}"
+                    class="featured-details-btn"
+                >
+                    Details
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    featuredBooks.appendChild(card);
+}
+
+
+
+// ======================================================
+// PRICE FORMAT
+// ======================================================
+
+function formatFeaturedPrice(
+    amount,
+    currency
+) {
+
+    try {
+
+        return new Intl.NumberFormat(
+            "en-IN",
+            {
+                style: "currency",
+                currency: currency
+            }
+        ).format(amount);
+
+    } catch (error) {
+
+        return `₹${amount}`;
+
+    }
+}
+
+
+
+// ======================================================
+// HTML ESCAPE
+// ======================================================
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+}
+
+
+
+// LOAD FEATURED BOOKS
+loadFeaturedBooks();
